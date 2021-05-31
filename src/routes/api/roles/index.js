@@ -47,15 +47,51 @@ router.get("/:id/employees", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  res.send("create a department");
+  try {
+    const data = await Role.create({
+      title: req.body.title,
+      salary: req.body.salary,
+      department_id: req.body.department_id,
+    });
+    res.json(data);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to create role" });
+  }
 });
 
 router.put("/:id", async (req, res) => {
-  res.send("update a department");
+  try {
+    const { id } = req.params;
+    const data = await Role.update(
+      {
+        title: req.body.title,
+        salary: req.body.salary,
+        department_id: req.body.department_id,
+      },
+      {
+        where: {
+          id,
+        },
+        returning: true,
+      }
+    );
+    res.json(data);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to update role" });
+  }
 });
 
 router.delete("/:id", async (req, res) => {
-  res.send("delete a department");
+  try {
+    const { id } = req.params;
+    const data = await Role.destroy({ where: { id } });
+    res.json(data);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to delete role" });
+  }
 });
 
 module.exports = router;
