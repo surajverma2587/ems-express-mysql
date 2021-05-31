@@ -59,15 +59,47 @@ router.get("/:id/employees", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  res.send("create a department");
+  try {
+    const data = await Department.create({
+      name: req.body.name,
+    });
+    res.json(data);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to create department" });
+  }
 });
 
 router.put("/:id", async (req, res) => {
-  res.send("update a department");
+  try {
+    const { id } = req.params;
+    const data = await Department.update(
+      {
+        name: req.body.name,
+      },
+      {
+        where: {
+          id,
+        },
+        returning: true,
+      }
+    );
+    res.json(data);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to update department" });
+  }
 });
 
 router.delete("/:id", async (req, res) => {
-  res.send("delete a department");
+  try {
+    const { id } = req.params;
+    const data = await Department.destroy({ where: { id } });
+    res.json(data);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Failed to delete department" });
+  }
 });
 
 module.exports = router;
