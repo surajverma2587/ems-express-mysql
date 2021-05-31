@@ -1,0 +1,47 @@
+[
+  {
+    "first_name": "John",
+    "last_name": "Smith",
+    "role_id": 7
+  },
+  {
+    "first_name": "Alice",
+    "last_name": "Walker",
+    "role_id": 7
+  },
+  {
+    "first_name": "Harry",
+    "last_name": "Potter",
+    "role_id": 6
+  },
+  {
+    "first_name": "Captain",
+    "last_name": "America",
+    "role_id": 5
+  },
+  {
+    "first_name": "Michael",
+    "last_name": "Scott",
+    "role_id": 4
+  },
+  {
+    "first_name": "David",
+    "last_name": "Brent",
+    "role_id": 2
+  },
+  {
+    "first_name": "Linda",
+    "last_name": "Green",
+    "role_id": 2
+  },
+  {
+    "first_name": "Ryan",
+    "last_name": "Gosling",
+    "role_id": 3
+  },
+  {
+    "first_name": "Tony",
+    "last_name": "Stark",
+    "role_id": 1
+  }
+]
